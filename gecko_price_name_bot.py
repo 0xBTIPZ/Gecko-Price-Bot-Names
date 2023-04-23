@@ -93,9 +93,10 @@ class MyClient(discord.Client):
                     continue
                 nick_me = f"{get_coin_data['symbol'].upper()} ${get_coin_data['market_data']['current_price']['usd']:.{decimal_places}f}"
                 percentage_24h = get_coin_data['market_data']['price_change_percentage_24h']
-                status_me = f"24h ($): {percentage_24h:.{decimal_places}f}% ↘️"
+                p_place = 2
+                status_me = f"24h ($): {percentage_24h:.{p_place}f}% ↘️"
                 if percentage_24h > 0:
-                    status_me = f"24h ($): +{percentage_24h:.{decimal_places}f}% ↗️"
+                    status_me = f"24h ($): +{percentage_24h:.{p_place}f}% ↗️"
                 for guild in self.guilds:
                     me = guild.me
                     try:
